@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: miau_db
+    environment:
+      POSTGRES_USER: miau_user_docker
+      POSTGRES_PASSWORD: usuario_docker_permitido
+      POSTGRES_DB: miau_db_postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql
+
+volumes:
+  postgres_data:
+    driver: local

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMISOR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<style>
+    body{
+        background:#bbb ;    
+    }
+
+    #form{
+        background: #ddd;
+        border-top-right-radius: 20px !important;
+        border-top-left-radius: 20px !important;
+    }
+
+    #tipo-file{
+        outline: none;
+    }
+
+    #activo{
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #2bec09;
+        list-style: none;
+    }
+
+    #nombre{
+        width: 300px;
+    }
+
+    #texto{
+        resize: none;
+        height: 200px;
+        outline: none;
+    }
+
+    #registro{
+        border-left:1.5px #0977ec solid;
+        border-top-right-radius: 20px;
+    }
+
+    #generacion{
+        border-left: 1.5px #0977ec solid;
+        border-bottom: 1.5px #0977ec solid;
+    }
+
+    #bord{
+        border-top:1.5px #0977ec solid;
+        border-top-left-radius: 20px;
+    }
+
+    #button-logout{
+        background: rgb(233, 38, 38);
+        border: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        text-align: center;
+        color: aliceblue;
+    }
+
+</style>
+<body>
+
+    <div class="container-fluid">
+        <header class="row bg-primary">
+            <span class="py-2 text-white d-flex justify-content-between">
+                <span> Bienvenido, CARLOS A. HERRERA PALMA </span>
+                <button class="border-0 rounded-1 bg-danger text-white">
+                    SALIR
+                </button>
+            </span>
+            
+        </header>
+
+        <main class="row d-flex justify-content-center align-items-center vh-100">
+                <form action="" class="col-xs-12 col-md-10 col-sm-10 col-lg-9 rounded-2 col-xxl-6 pt-0 pe-0" id="form">
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <div class="row">
+                                <div class="col-3 text-center">
+                                    <img src="./src/logos/LOGO_MIAU_NUEVO.jpg" class="" width="100" height="100">
+                                </div>
+                                <div class="col-9">
+                                    <div class="row w-100">
+                                        <h5 class="text-center bg-white mb-0" id="registro"> REGISTRO DE INCIDENCIAS </h5>
+                                    </div>
+                                    <div class="row w-100">
+                                        <h5 class="text-center bg-white mb-4" id="generacion">Generación de Tickets de Mesa de Ayuda</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <h1 class="text-center"> NUEVO TICKET </h1>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6">
+                            <p> <span class="fw-bold">FECHA:</span> <span>07/08/2026</span></p>
+                        </div>
+                        <div class="col-6">
+                            <span class="fw-bold">HORA:</span> <span>16:50</span>
+                        </div>
+                    </div>
+                    <hr>
+                   <div class="row">
+                     <div class="col-6">
+                        <p class="fw-bold">SEDE REGIONAL:</p>
+                     </div> 
+                     <div class="col-6">
+                        <p> ANCASH</p>
+                     </div>
+                   </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="fw-bold">SEDE JURISDICCIONAL:</p> </div>
+                        <div class="col-6">
+                            <p>SANTA-CHIMBOTE</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="fw-bold">CATEGORIA DE INCIDENCIA</p>
+                        </div>
+                        <div class="col-6">
+                    <span>
+                        <select name="" id="tipo-file">
+                            <option value="category">Selecciona una opción</option>
+                            <option value="excel">Excel</option>
+                            <option value="word">Word</option>
+                            <option value="pdf">PDF</option>
+                            <option value="img">IMAGEN</option>
+                        </select>
+                    </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="fw-bold">TIPO DE INCIDENCIA </p>
+                        </div>
+                        <div class="col-6">
+                            <span id="lista-incidencia">
+                                <select name="" id="tipo-file">
+                                    <option value="category">Selecciona una opción</option>
+                                    <option value="excel">Excel</option>
+                                    <option value="word">Word</option>
+                                    <option value="pdf">PDF</option>
+                                    <option value="img">IMAGEN</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="fw-bold">RESPONSABLE</p>
+                        </div>
+                        <div class="col-6">
+                            <p>CARLOS A.H.P</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="fw-bold">MONITOR INFORMATICO ASIGNADO: </p>
+                        </div>
+                        <div class="col-6">
+                            <p disabled>ANONYMOUS</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6">
+                            <span>
+                                <select name="" id="tipo-file">
+                                    <option value="type">Tipo de documento</option>
+                                    <option value="excel">Excel</option>
+                                    <option value="word">Word</option>
+                                    <option value="pdf">PDF</option>
+                                    <option value="img">IMAGEN</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="col-6">
+                            <label for="files" disabled class="btn btn-warning">SELECCIONAR ARCHIVO</label>
+                            <input type="file" id="files" disabled hidden>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12 me-3 text-center">
+                            <textarea name="" class="w-100 p-4" id="texto" placeholder="Descripcion de Incidencia"></textarea>
+                        </div>
+                    </div>
+                </form>
+        </main>
+    </div>
+    
+    <script>
+
+        document.querySelector("#button-logout").innerHTML=
+        `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+  <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+</svg>`
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+{
+  "tabs": [
+    {
+      "id": "1786905547078ark7",
+      "tabKind": "request",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:8000/api/usuario",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n    \"id_rol\":1,\n    \"cod_usuario\":\"MI-1\",\n    \"username\":\"carlos_herrera\",\n    \"clave\":\"carlos_herrera\",\n    \"nombres\":\"Carlos Alberto\",\n    \"ape_pat\":\"Herrera\",\n    \"ape_mat\":\"Palma\",\n    \"id_sedereg\":1,\n    \"id_sedejuris\":1,\n    \"doc\":75747335n,\n    \"email\":\"carlos.a.h.palma@gmail.com\",\n    \"estado\":1\n}"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true,
+      "inheritScripts": false,
+      "preRequestScript": "",
+      "testScript": "",
+      "testRules": [],
+      "setVariables": [],
+      "activeTab": "body",
+      "responseTab": "body",
+      "sourceRequestId": null,
+      "sourceCollectionId": null,
+      "sourceFolderPath": null,
+      "sourceScope": "local",
+      "proxyId": null,
+      "certificateConfig": null,
+      "inheritCertificate": false,
+      "response": {
+        "status": 422,
+        "statusText": "Unprocessable Content",
+        "headers": {
+          "cache-control": "no-cache, private",
+          "connection": "close",
+          "content-type": "application/json",
+          "date": "Sun, 16 Aug 2026 18:47:40 GMT",
+          "host": "localhost:8000",
+          "vary": "Origin",
+          "x-powered-by": "PHP/8.2.12"
+        },
+        "body": "{\"message\":\"El rol es requerido (and 8 more errors)\",\"errors\":{\"id_rol\":[\"El rol es requerido\"],\"cod_usuario\":[\"El codigo de usuario es requerido\"],\"username\":[\"El nombre de usuario es requerido\"],\"nombres\":[\"El nombre es requerido\"],\"ape_pat\":[\"El apellido paterno es requerido\"],\"id_sedereg\":[\"La sede de registro es requerida\"],\"id_sedejuris\":[\"La sede de jurisdiccion es requerida\"],\"doc\":[\"El documento es requerido\"],\"estado\":[\"El estado es requerido\"]}}",
+        "time": 372,
+        "size": 460,
+        "actualRequest": {
+          "method": "POST",
+          "url": "http://localhost:8000/api/usuario",
+          "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          "body": "{\n    \"id_rol\":1,\n    \"cod_usuario\":\"MI-1\",\n    \"username\":\"carlos_herrera\",\n    \"clave\":\"carlos_herrera\",\n    \"nombres\":\"Carlos Alberto\",\n    \"ape_pat\":\"Herrera\",\n    \"ape_mat\":\"Palma\",\n    \"id_sedereg\":1,\n    \"id_sedejuris\":1,\n    \"doc\":75747335n,\n    \"email\":\"carlos.a.h.palma@gmail.com\",\n    \"estado\":1\n}",
+          "protocol": "HTTP/1.1",
+          "certificateNames": "System Trust Store"
+        },
+        "cookies": [],
+        "timingPhases": [
+          {
+            "name": "Environment",
+            "duration": 1
+          },
+          {
+            "name": "Auth",
+            "duration": 0
+          },
+          {
+            "name": "HTTP Request",
+            "duration": 372
+          },
+          {
+            "name": "Post-processing",
+            "duration": 0
+          }
+        ]
+      },
+      "error": null,
+      "loading": false,
+      "wsConnected": false,
+      "wsUrl": null,
+      "wsMessages": [],
+      "grpcConnected": false,
+      "grpcStreaming": false,
+      "grpcMessages": [],
+      "grpcConfig": null,
+      "groupId": null,
+      "mcpDescription": "",
+      "mcpInputSchema": "",
+      "collectionId": null,
+      "folderId": null,
+      "folderPath": null,
+      "editorScope": "local"
+    }
+  ],
+  "groups": [],
+  "activeTabId": "1786905547078ark7",
+  "currentView": "requests",
+  "sidebarTab": "collections",
+  "sidebarCollapsed": true,
+  "responseTab": "body",
+  "layoutMode": "horizontal",
+  "splitRatio": 0.5,
+  "horizontalSplitRatio": 0.5,
+  "selectedMockServerId": null
+}

@@ -1,0 +1,71 @@
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+model Usuario{
+  id Int @id @default(autoincrement())
+  username String
+  clave String
+  ape_pat String
+  ape_mat String?
+  doc Int? @unique
+  email String?
+  rol Int @default(0)
+  emisor Emisor?
+  @@map("Usuario")
+}
+
+model Emisor{
+  id Int @id @default(autoincrement())
+  id_usuario Int @unique
+  sede_reg String
+  sede_juris String
+  usuario Usuario @relation(fields: [id_usuario], references: [id])
+  @@map("Emisor")
+}
+
+model Receptor{
+  id Int @id @default(autoincrement())
+  estado String
+  @@map("Receptor")
+}
+
+model Ticket{
+  id Int @id @default(autoincrement())
+  fecha_emision DateTime
+  @@map("Ticket")
+}
+
+model Categoria{
+  id Int @id @default(autoincrement())
+  nombre String
+  tipo String 
+  @@map("Categoria")
+}
+
+model Ticket_detalle{
+  id Int @id @default(autoincrement())
+  descripcion_problema String
+  fecha_recepcion DateTime
+  nivel_importancia String
+  estado String
+  fecha_estado_actual DateTime
+  descripcion_solucion String
+  @@map("Ticket_detalle")
+}
+
+model File{
+  id Int @id @default(autoincrement())
+  tipo String
+  enlace String
+  @@map("File")
+}
+
