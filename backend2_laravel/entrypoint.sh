@@ -1,6 +1,10 @@
 #!/bin/sh
 set -e
 
+# Configurar puerto dinamico si es proveido por Render / entorno
+PORT="${PORT:-80}"
+sed -i "s/listen 80;/listen ${PORT};/g" /etc/nginx/http.d/default.conf || true
+
 # Asegurar directorios de storage
 mkdir -p /var/www/html/storage/framework/sessions \
          /var/www/html/storage/framework/views \
