@@ -2,21 +2,13 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 
 import LoginView from '@/views/LoginView.vue'
-
-// Vistas SAS
 import RegistroTicketView from '@/views/sas/RegistroTicketView.vue'
 import MisTicketsView from '@/views/sas/MisTicketsView.vue'
 import IncidenciasInformativasView from '@/views/sas/IncidenciasInformativasView.vue'
 import MisPublicacionesView from '@/views/sas/MisPublicacionesView.vue'
-
-// Vistas Monitor
 import DashboardMonitorView from '@/views/monitor/DashboardMonitorView.vue'
 import GestionTicketsView from '@/views/monitor/GestionTicketsView.vue'
-
-// Modulo Gerencial (Monitor, Especialista, Coordinador, Calidad, Guest)
 import ModuloGerencialView from '@/views/gerencial/ModuloGerencialView.vue'
-
-// Vistas Especialista
 import AdministracionCatalogoView from '@/views/especialista/AdministracionCatalogoView.vue'
 import GestionPublicacionesView from '@/views/especialista/GestionPublicacionesView.vue'
 import CargaUsuariosView from '@/views/especialista/CargaUsuariosView.vue'
@@ -38,7 +30,6 @@ const routes = [
       return '/modulo-gerencial'
     }
   },
-  // Rutas SAS
   {
     path: '/sas/registrar-ticket',
     name: 'sas-registrar-ticket',
@@ -63,7 +54,6 @@ const routes = [
     component: MisPublicacionesView,
     meta: { requiresAuth: true, roles: ['SAS'] }
   },
-  // Rutas Monitor Informatico
   {
     path: '/monitor/dashboard',
     name: 'monitor-dashboard',
@@ -76,14 +66,12 @@ const routes = [
     component: GestionTicketsView,
     meta: { requiresAuth: true, roles: ['MI', 'EMI', 'CSMI', 'ECC', 'GUEST'] }
   },
-  // Modulo Gerencial
   {
     path: '/modulo-gerencial',
     name: 'modulo-gerencial',
     component: ModuloGerencialView,
     meta: { requiresAuth: true, roles: ['MI', 'EMI', 'CSMI', 'ECC', 'GUEST'] }
   },
-  // Rutas Especialista
   {
     path: '/administracion/catalogo',
     name: 'admin-catalogo',
@@ -125,7 +113,6 @@ router.beforeEach((to, from, next) => {
   }
 
   if (to.meta.roles && !to.meta.roles.includes(auth.rolCodigo)) {
-    // Si no tiene el rol, redirigir a su inicio
     return next('/')
   }
 

@@ -1,4 +1,3 @@
-# Etapa 1: Construccion de la SPA con Node
 FROM node:20-alpine AS build
 WORKDIR /app
 
@@ -8,7 +7,6 @@ RUN npm ci || npm install
 COPY . .
 RUN npm run build
 
-# Etapa 2: Servidor Nginx de produccion
 FROM nginx:alpine
 
 COPY --from=build /app/dist /usr/share/nginx/html

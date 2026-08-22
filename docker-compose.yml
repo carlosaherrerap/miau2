@@ -32,6 +32,7 @@ services:
       postgres:
         condition: service_healthy
     environment:
+      PORT: 8000
       APP_NAME: "MIAU 2026"
       APP_ENV: local
       APP_DEBUG: "true"
@@ -50,7 +51,7 @@ services:
       LOG_CHANNEL: stderr
       LOG_LEVEL: debug
     ports:
-      - "8000:80"
+      - "8000:8000"
     volumes:
       - backend_storage:/var/www/html/storage/app/public
     networks:
@@ -66,7 +67,7 @@ services:
     depends_on:
       - backend
     environment:
-      BACKEND_URL: http://backend:80
+      BACKEND_URL: http://backend:8000
     ports:
       - "80:80"
       - "3000:80"

@@ -14,7 +14,6 @@
       </div>
 
       <div v-else-if="ticket" class="ticket-detail-body">
-        <!-- Informacion General del Ticket -->
         <div class="detail-grid">
           <div>
             <span class="detail-label">Identificador Interno MI:</span>
@@ -58,13 +57,11 @@
           </div>
         </div>
 
-        <!-- Descripcion del Problema -->
         <div class="form-group" style="margin-top: 16px;">
           <label class="detail-label">Descripción del Problema / Solicitud:</label>
           <div class="detail-box">{{ ticket.descripcion_problema }}</div>
         </div>
 
-        <!-- Archivos Adjuntos -->
         <div class="form-group" v-if="ticket.archivos && ticket.archivos.length > 0">
           <label class="detail-label">Archivos Adjuntos ({{ ticket.archivos.length }}):</label>
           <ul class="file-list">
@@ -77,7 +74,6 @@
           </ul>
         </div>
 
-        <!-- Resolucion o Justificacion ya registradas -->
         <div v-if="ticket.descripcion_resolucion" class="alert alert-success" style="margin-top: 16px;">
           <strong>Resolución Registrada:</strong>
           <p style="margin-top: 4px;">{{ ticket.descripcion_resolucion }}</p>
@@ -88,7 +84,6 @@
           <p style="margin-top: 4px;">{{ ticket.justificacion_no_procede }}</p>
         </div>
 
-        <!-- SECCION DE ATENCION PARA MONITOR INFORMATICO -->
         <div v-if="canManage" class="monitor-actions-section">
           <div v-if="ticket.estado === 'Abierto'">
             <h4 class="section-subtitle">Gestión y Resolución de Ticket</h4>
@@ -120,7 +115,6 @@
             </div>
           </div>
 
-          <!-- EDICION EXCLUSIVA DE CLASIFICACION (CATEGORIA Y TIPO) -->
           <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #e2e8f0;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
               <h4 class="section-subtitle" style="margin: 0;">Edición de Clasificación (Categoría y Tipo)</h4>
@@ -228,7 +222,6 @@ const loadCategorias = async () => {
       categorias.value = res.data.data
     }
   } catch (err) {
-    // Silencioso
   }
 }
 
@@ -301,7 +294,6 @@ const formatFecha = (str) => {
 
 const formatTiempo = (str) => {
   if (!str) return '-'
-  // Si viene hh:mm:ss, recortar segundos para mostrar hh:mm como pide el PDF
   const parts = str.split(':')
   if (parts.length >= 2) {
     return `${parts[0]}:${parts[1]}`

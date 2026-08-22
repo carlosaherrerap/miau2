@@ -10,7 +10,6 @@
       </div>
 
       <form @submit.prevent="handleSubmit">
-        <!-- 1. Datos del Registro -->
         <div style="margin-bottom: 22px;">
           <h3 style="font-size: 0.95rem; font-weight: 700; color: #0f172a; margin-bottom: 10px;">
             1. Datos del Registro
@@ -36,7 +35,6 @@
           </div>
         </div>
 
-        <!-- 2. Datos de la Incidencia -->
         <div style="margin-bottom: 22px;">
           <h3 style="font-size: 0.95rem; font-weight: 700; color: #0f172a; margin-bottom: 10px;">
             2. Datos de la Incidencia
@@ -98,7 +96,6 @@
           </div>
         </div>
 
-        <!-- 3. Archivos Adjuntos -->
         <div style="margin-bottom: 24px;">
           <h3 style="font-size: 0.95rem; font-weight: 700; color: #0f172a; margin-bottom: 6px;">
             3. Archivos Adjuntos (Máx. 3 archivos)
@@ -132,7 +129,6 @@
           </div>
         </div>
 
-        <!-- Botones con textos cortos e iconos -->
         <div style="display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid #e2e8f0; padding-top: 16px;">
           <button type="button" @click="resetForm" class="btn btn-secondary" :disabled="submitting">
             <RotateCcw :size="15" />

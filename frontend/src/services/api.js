@@ -7,7 +7,6 @@ const api = axios.create({
   }
 })
 
-// Interceptor para agregar token Bearer automaticamente
 api.interceptors.request.use(config => {
   const token = localStorage.getItem('auth_token')
   if (token) {
@@ -18,7 +17,6 @@ api.interceptors.request.use(config => {
   return Promise.reject(error)
 })
 
-// Interceptor para manejar errores 401
 api.interceptors.response.use(response => {
   return response
 }, error => {

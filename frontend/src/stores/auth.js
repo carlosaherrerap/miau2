@@ -64,7 +64,6 @@ export const useAuthStore = defineStore('auth', {
       try {
         await api.post('/auth/logout')
       } catch (err) {
-        // Ignorar error al cerrar sesion
       } finally {
         this.user = null
         this.token = null
