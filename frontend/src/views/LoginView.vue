@@ -5,7 +5,7 @@
         <div class="login-icon-box">
           <Ticket :size="28" class="icon-svg" />
         </div>
-        <h1 class="system-title">MIAU 2026</h1>
+        <h1 class="system-title">SISTEMA DE TICKETS</h1>
       </div>
 
       <div v-if="auth.error" class="alert alert-danger">

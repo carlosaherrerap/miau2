@@ -6,7 +6,7 @@
           <Ticket :size="20" class="brand-svg" />
         </div>
         <div>
-          <span class="brand-title">MIAU 2026</span>
+          <span class="brand-title">SISTEMA DE TICKETS</span>
           <span class="brand-badge" v-if="auth.rolCodigo">{{ auth.rolNombre }}</span>
         </div>
       </div>
