@@ -49,31 +49,6 @@
           <span>{{ auth.loading ? 'Verificando...' : 'Ingresar al Sistema' }}</span>
         </button>
       </form>
-
-      <!-- Accesos rapidos de prueba de taller -->
-      <div class="quick-access-box">
-        <span class="quick-title">Cuentas de prueba rápida (Modo Taller):</span>
-        <div class="quick-btns">
-          <button @click="fillUser('sas043', 'password123')" class="btn btn-secondary btn-sm" type="button">
-            SAS (Lima Met 1)
-          </button>
-          <button @click="fillUser('sas022', 'password123')" class="btn btn-secondary btn-sm" type="button">
-            SAS (Ventanilla)
-          </button>
-          <button @click="fillUser('monitor1', 'password123')" class="btn btn-secondary btn-sm" type="button">
-            Monitor MI1 (Lima)
-          </button>
-          <button @click="fillUser('monitor2', 'password123')" class="btn btn-secondary btn-sm" type="button">
-            Monitor MI2 (Callao/Tumbes)
-          </button>
-          <button @click="fillUser('especialista', 'password123')" class="btn btn-secondary btn-sm" type="button">
-            Especialista
-          </button>
-          <button @click="fillUser('santiago', 'password123')" class="btn btn-secondary btn-sm" type="button">
-            Coordinador
-          </button>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -89,11 +64,6 @@ const router = useRouter()
 
 const username = ref('')
 const clave = ref('')
-
-const fillUser = (u, p) => {
-  username.value = u
-  clave.value = p
-}
 
 const handleSubmit = async () => {
   const res = await auth.login(username.value, clave.value)
@@ -182,25 +152,5 @@ const handleSubmit = async () => {
   width: 100%;
   padding: 10px;
   margin-top: 8px;
-}
-
-.quick-access-box {
-  margin-top: 24px;
-  padding-top: 16px;
-  border-top: 1px solid #e2e8f0;
-}
-
-.quick-title {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #64748b;
-  margin-bottom: 8px;
-}
-
-.quick-btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
 }
 </style>

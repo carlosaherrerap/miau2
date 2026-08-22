@@ -1,0 +1,62 @@
+
+databases:
+  - name: miau-db
+    databaseName: miau_db_postgres
+    user: miau_user_render
+    plan: free
+    region: oregon
+
+services:
+  # 1. Backend API Laravel 12
+  - type: web
+    name: miau-backend
+    runtime: docker
+    dockerfilePath: ./backend2_laravel/Dockerfile
+    dockerContext: ./backend2_laravel
+    plan: free
+    region: oregon
+    envVars:
+      - key: APP_NAME
+        value: "MIAU 2026"
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_URL
+        fromService:
+          type: web
+          name: miau-backend
+          property: host
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DATABASE_URL
+        fromDatabase:
+          name: miau-db
+          property: connectionString
+      - key: SESSION_DRIVER
+        value: file
+      - key: CACHE_STORE
+        value: file
+      - key: FILESYSTEM_DISK
+        value: public
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: LOG_LEVEL
+        value: info
+
+  # 2. Frontend SPA Vue 3 (Nginx)
+  - type: web
+    name: miau-frontend
+    runtime: docker
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: ./frontend
+    plan: free
+    region: oregon
+    envVars:
+      - key: BACKEND_URL
+        fromService:
+          type: web
+          name: miau-backend
+          property: host

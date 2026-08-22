@@ -1,4 +1,5 @@
 services:
+  # 1. Base de Datos PostgreSQL
   postgres:
     image: postgres:17-alpine
     container_name: miau_db
@@ -10,9 +11,74 @@ services:
       - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql
+      - ./init.sql:/docker-entrypoint-initdb.d/01_init.sql:ro
+      - ./seed.sql:/docker-entrypoint-initdb.d/02_seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U miau_user_docker -d miau_db_postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - miau_network
+
+  # 2. Backend Laravel 12 API
+  backend:
+    build:
+      context: ./backend2_laravel
+      dockerfile: Dockerfile
+    container_name: miau_backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      APP_NAME: "MIAU 2026"
+      APP_ENV: local
+      APP_DEBUG: "true"
+      APP_KEY: base64:kQOq7YwB3jKzN1vX9pL4mR8tU2vC5eF0aD6bH8jM2gE=
+      APP_URL: http://localhost:8000
+      DB_CONNECTION: pgsql
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: miau_db_postgres
+      DB_USERNAME: miau_user_docker
+      DB_PASSWORD: usuario_docker_permitido
+      SESSION_DRIVER: file
+      CACHE_STORE: file
+      FILESYSTEM_DISK: public
+      QUEUE_CONNECTION: sync
+      LOG_CHANNEL: stderr
+      LOG_LEVEL: debug
+    ports:
+      - "8000:80"
+    volumes:
+      - backend_storage:/var/www/html/storage/app/public
+    networks:
+      - miau_network
+
+  # 3. Frontend Vue 3 + Nginx Reverse Proxy
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: miau_frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      BACKEND_URL: http://backend:80
+    ports:
+      - "80:80"
+      - "3000:80"
+    networks:
+      - miau_network
 
 volumes:
   postgres_data:
     driver: local
+  backend_storage:
+    driver: local
+
+networks:
+  miau_network:
+    driver: bridge
