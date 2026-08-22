@@ -24,7 +24,7 @@ services:
       - key: APP_KEY
         value: base64:kQOq7YwB3jKzN1vX9pL4mR8tU2vC5eF0aD6bH8jM2gE=
       - key: APP_URL
-        value: https://miau-backend-10ug.onrender.com
+        value: https://miau-backend-qs21.onrender.com
       - key: DB_CONNECTION
         value: pgsql
       - key: DATABASE_URL
@@ -56,4 +56,4 @@ services:
         destination: /index.html
     envVars:
       - key: VITE_API_BASE_URL
-        value: https://miau-backend-10ug.onrender.com/api
+        value: https://miau-backend-qs21.onrender.com/api
