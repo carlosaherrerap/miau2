@@ -6,7 +6,7 @@ databases:
     region: oregon
 
 services:
-  # 1. Backend Laravel API (Ultra ligero con php artisan serve)
+  # 1. Backend Laravel API (Docker con php artisan serve ultra rapido)
   - type: web
     name: miau-backend
     runtime: docker
@@ -42,17 +42,14 @@ services:
       - key: LOG_LEVEL
         value: info
 
-  # 2. Frontend SPA Vue 3 (Static Site nativo en Render - Despliegue en segundos)
-  - type: static
+  # 2. Frontend Vue 3 SPA (Static Site nativo en Render)
+  - type: web
     name: miau-frontend
+    runtime: static
     rootDir: frontend
     buildCommand: npm install && npm run build
-    publishPath: dist
+    staticPublishPath: ./dist
     pullRequestPreviewsEnabled: false
-    headers:
-      - path: /*
-        name: Access-Control-Allow-Origin
-        value: "*"
     routes:
       - type: rewrite
         source: /*
