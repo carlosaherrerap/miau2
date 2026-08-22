@@ -43,7 +43,7 @@ services:
         value: info
 
   # 2. Frontend SPA Vue 3 (Static Site nativo en Render - Despliegue en segundos)
-  - type: staticSite
+  - type: static
     name: miau-frontend
     rootDir: frontend
     buildCommand: npm install && npm run build
